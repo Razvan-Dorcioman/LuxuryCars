@@ -1,4 +1,5 @@
-﻿using LuxuryCars.Models.Entities;
+﻿using LuxuryCars.Controllers;
+using LuxuryCars.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -68,13 +69,29 @@ namespace LuxuryCars.Models
 
         public void AddOrder(Order newOrder)
         {
+            Dictionary<string, string> props = new Dictionary<string, string>();
+
+            props["OrderNumber"] = newOrder.OrderNumber;
+            props["OrderDate"] = newOrder.OrderDate.ToString();
+            props["User"] = newOrder.User.UserName;
+            var i = 0;
+            var totalPrice = 0;
+            
             // Convert new products to lookup of product
             foreach (var item in newOrder.Items)
             {
+                i++;
                 item.Product = _ctx.Products.Find(item.Product.Id);
+                props["Brand" + i] = item.Product.Brand;
+                totalPrice += item.UnitPrice * item.Quantity;
             }
 
+            props["TotalPrice"] = totalPrice.ToString();
+
             AddEntity(newOrder);
+
+            TelemetryController.SendEvent("Order placed", null);
+
         }
 
         public IEnumerable<Order> GetAllOrders(bool includeItems)

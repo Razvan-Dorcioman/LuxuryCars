@@ -52,7 +52,7 @@ namespace LuxuryCars.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Username,
+                var result = await _signInManager.PasswordSignInAsync(model.Email,
                     model.Password,
                     model.RememberMe,
                     false);
@@ -87,7 +87,7 @@ namespace LuxuryCars.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByNameAsync(model.Username);
+                var user = await _userManager.FindByEmailAsync(model.Email);
 
                 if (user != null)
                 {
