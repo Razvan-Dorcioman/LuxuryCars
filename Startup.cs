@@ -37,6 +37,8 @@ namespace LuxuryCars
             })
             .AddEntityFrameworkStores<LCContext>();
 
+            services.AddScoped<ILCRepository, LCRepository>();
+
             services.AddDbContext<LCContext>(cfg =>
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("LCConnectionString"));
@@ -45,9 +47,26 @@ namespace LuxuryCars
 
             services.AddTransient<LCSeeder>();
 
-            //services.AddScoped<IDutchRepository, DutchRepository>();
+            services.AddCors(options => {
+                options.AddPolicy("CorsPolicy", b => {
+                    b.AllowAnyMethod();
+                    b.AllowAnyHeader();
+                    b.AllowCredentials();
+                });
+            });
+
+            services.AddMvc(option => option.EnableEndpointRouting = false);
 
             services.AddControllersWithViews();
+
+            Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions aiOptions
+               = new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions();
+            // Disables adaptive sampling.
+            aiOptions.EnableAdaptiveSampling = false;
+
+            // Disables QuickPulse (Live Metrics stream).
+            aiOptions.EnableQuickPulseMetricStream = false;
+            services.AddApplicationInsightsTelemetry(aiOptions);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,16 +78,23 @@ namespace LuxuryCars
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            //app.UseSpaStaticFiles();
+            app.UseAuthentication();
 
-            app.UseRouting();
+            app.UseCors("CorsPolicy");
 
-            app.UseAuthorization();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action=Index}/{id?}");
+            });
 
             app.UseSpa(spa =>
             {
