@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
             .subscribe(success => {
                 if (success) {
                     this.products = this.data.products;
+                    console.log(this.products)
                 }
             });
     }

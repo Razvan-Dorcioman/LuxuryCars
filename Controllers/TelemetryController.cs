@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LuxuryCars.Controllers
 {
     public class TelemetryController : Controller
     {
-        public IActionResult Index()
+        private static TelemetryClient _telemetry;
+
+        // Use constructor injection to get a TelemetryClient instance.
+        public TelemetryController(TelemetryClient telemetry)
         {
-            return View();
+            _telemetry = telemetry;
+        }
+
+        public static void SendEvent(string eventName, IDictionary<string, string> props)
+        {
+            _telemetry.TrackEvent(eventName, props);
         }
     }
 }
