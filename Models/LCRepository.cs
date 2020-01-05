@@ -90,7 +90,7 @@ namespace LuxuryCars.Models
 
             AddEntity(newOrder);
 
-            TelemetryController.SendEvent("Order placed", null);
+            TelemetryController.SendEvent("Order placed", props);
 
         }
 
