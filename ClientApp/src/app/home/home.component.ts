@@ -5,6 +5,7 @@ import { DatabaseService } from '../services/database.service';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
@@ -15,12 +16,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.data.loadProducts()
-            .subscribe(success => {
-                if (success) {
-                    this.products = this.data.products;
-                    console.log(this.products)
-                }
-            });
+        
     }
+
 }

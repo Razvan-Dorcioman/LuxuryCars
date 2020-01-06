@@ -1,0 +1,128 @@
+.box-title {
+  font-weight: bold;
+}
+
+.box {
+  margin-right: 0px;
+  width: 100%;
+}
+
+box-content {
+  margin-right: 0px;
+}
+
+.box-img, .box-details, .box-price {
+  display: inline-block;
+}
+
+.box-img {
+  width: 150px;
+}
+
+.box-details {
+  width: 400px;
+}
+
+.box-price {
+  width: 100px;
+}
+
+.box-price {
+  float: right;
+}
+
+.header {
+  margin: 40px 0px;
+}
+
+  .header button {
+    margin: 0px 20px;
+  }
+
+.button {
+  display: inline-block;
+  font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  padding: .8em 1.4em;
+  padding-right: 4.7em;
+  background: #009ED8;
+  border: none;
+  color: white;
+  transition: .2s;
+}
+
+  .button:active, .button:focus {
+    background: darken(#009ED8, 30%);
+    outline: none;
+  }
+
+  .button:hover {
+    background: darken(#009ED8, 10%);
+  }
+
+  .button:before {
+    background: fadeout(#000, 90%);
+  }
+
+  .button:before, .button:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: inherit;
+    padding-bottom: inherit;
+    width: 2.8em;
+    content: "\00a0";
+    font-family: 'FontAwesome', sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    transition: .2s;
+    transform-origin: 50% 60%;
+  }
+
+.button {
+  min-width: 13em;
+}
+
+.search:hover:after {
+  -webkit-animation: none;
+  -webkit-transform: scale(1.4);
+  animation: none;
+  transform: scale(1.4);
+}
+
+.search:after {
+  content: "\f002";
+}
+
+.arrow {
+  background: #FE5F55;
+}
+
+  .arrow:active, .arrow:focus {
+    background: darken(#FE5F55, 30%);
+  }
+
+  .arrow:hover {
+    background: darken(#FE5F55, 10%);
+  }
+
+  .arrow:after {
+    content: "\F078";
+  }
+
+  .arrow:hover:after {
+    -webkit-animation: bounceright .3s alternate ease infinite;
+    animation: bounceright .3s alternate ease infinite;
+  }
+
+@keyframes bounceright {
+  from {
+    transform: translateY(-3px);
+  }
+
+  to {
+    transform: translateY(3px);
+  }
+}
