@@ -169,5 +169,12 @@ namespace LuxuryCars.Models
         {
             return _ctx.SaveChanges() > 0;
         }
+
+        public Product GetProductById(int id)
+        {
+            return _ctx.Products
+                       .Where(p => p.Id == id)
+                       .FirstOrDefault();
+        }
     }
 }

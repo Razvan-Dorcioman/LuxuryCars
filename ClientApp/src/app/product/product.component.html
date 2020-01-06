@@ -1,0 +1,17 @@
+<div>
+  <!-- nume articol; nume masina; specificatii; pret -->
+  <div style="display:inline-block">
+    <div style="width: 300px">
+      {{ product.title }}
+    </div>
+    <div style="width: 300px">
+      {{ product.price | currency: USD}}
+    </div>
+  </div>
+
+  <div>
+    {{ product.brand}} {{product.model}}
+  </div>
+
+
+</div>
