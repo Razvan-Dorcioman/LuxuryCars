@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using LuxuryCars.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using AutoMapper;
 
 namespace LuxuryCars
 {
@@ -32,8 +33,8 @@ namespace LuxuryCars
             services.AddIdentity<User, IdentityRole>(cfg =>
             {
                 cfg.User.RequireUniqueEmail = true;
-                cfg.Password.RequiredLength = 8;
-                cfg.Password.RequireNonAlphanumeric = true;
+                cfg.Password.RequiredLength = 6;
+                //cfg.Password.RequireNonAlphanumeric = true;
             })
             .AddEntityFrameworkStores<LCContext>();
 
@@ -58,6 +59,8 @@ namespace LuxuryCars
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
             services.AddControllersWithViews();
+
+            services.AddAutoMapper(typeof(Startup));
 
             Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions aiOptions
                = new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions();
