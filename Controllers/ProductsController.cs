@@ -44,7 +44,21 @@ namespace LuxuryCars.Controllers
                 return BadRequest("Failed to get products");
             }
         }
-
+        
+        [HttpGet]
+        [Route("getProductById/{id}")]
+        public IActionResult GetProductById([FromRoute] int id)
+        {
+            try
+            {
+                return Ok(_repository.GetProductById(id));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get products: {ex}");
+                return BadRequest("Failed to get products");
+            }
+            
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]ProductViewModel model)
         {
@@ -75,6 +89,7 @@ namespace LuxuryCars.Controllers
             }
 
             return BadRequest("Failed to save new order");
+
         }
     }
 }

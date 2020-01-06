@@ -27,4 +27,14 @@ export class LoginComponent {
                 }
             }, err => this.errorMessage = "Invalid credentials " + err);
     }
+
+//    onLogin() {
+//        this.errorMessage = "";
+//       this.data.login(this.creds)
+//            .subscribe(success => {
+//                if (success) {
+//                    this.router.navigate([""]);
+//                }
+//            }, err => this.errorMessage = "Invalid credentials " + err);
+//    }
 }

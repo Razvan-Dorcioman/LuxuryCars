@@ -1,0 +1,42 @@
+<div class="header">
+  <button class="button  search">Search</button>
+  <button class="button  arrow dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by</button>
+  <div class="btn-group">
+    <!--<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Action
+    </button>-->  
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+  </div>
+</div>
+<div class="">
+  <div *ngFor="let product of products">
+    <div class="box" id="{{product.id}}">
+
+      <div class="box-title" [routerLink]="['product', product.id]" style="cursor:pointer">
+        {{ product.title }}
+      </div>
+
+      <div class="box-content">
+        <!--<div class="box-img">
+          <img alt="" width="150" height="150" src="C:\Users\IulianaP\source\repos\LuxuryCars\LuxuryCars\ClientApp\src\app\home\car.png" />
+        </div>-->
+        <div class="box-details">
+          {{ product.brand}} {{product.model}}
+          <br />
+          {{ product.manufactoring | date:'yyyy'}} - {{product.km}} km - {{product.engine}} cm3 - {{product.fuelType}}
+        </div>
+        <div class="box-price">
+          {{ product.price | currency: USD}}
+        </div>
+      </div>
+
+    </div>
+    <hr />
+  </div>
+</div>
