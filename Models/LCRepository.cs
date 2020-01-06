@@ -33,7 +33,7 @@ namespace LuxuryCars.Models
                 .FirstOrDefault(u => u.Id.Equals(id));
         }
 
-        public bool updateUser(User user)
+        public bool UpdateUser(User user)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace LuxuryCars.Models
             }
         }
 
-        public bool deleteUser(string id)
+        public bool DeleteUser(string id)
         {
             try
             {

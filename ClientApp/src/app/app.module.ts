@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
 import { SellCarComponent } from './sell-car/sell-car.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { SellCarComponent } from './sell-car/sell-car.component';
         { path: 'sell-car', component: SellCarComponent },
     ])
   ],
-  providers: [],
+    providers: [ CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
