@@ -44,7 +44,7 @@ namespace LuxuryCars.Controllers
                 return BadRequest("Failed to get products");
             }
         }
-        
+
         [HttpGet]
         [Route("getProductById/{id}")]
         public IActionResult GetProductById([FromRoute] int id)
@@ -58,6 +58,7 @@ namespace LuxuryCars.Controllers
                 _logger.LogError($"Failed to get products: {ex}");
                 return BadRequest("Failed to get products");
             }
+        }
             
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]ProductViewModel model)

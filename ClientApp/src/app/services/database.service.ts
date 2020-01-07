@@ -2,7 +2,8 @@ import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from "@angular/comm
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs"
 import { Product } from "./product.service";
-import 'rxjs/add/operator/map';
+//import 'rxjs/add/operator/map';
+//import 'rxjs/Rx';
 import { CookieService } from "ngx-cookie-service";
 import { map, retry } from "rxjs/operators";
 
@@ -45,8 +46,8 @@ export class DatabaseService {
     login(creds): Observable<boolean> {
         const hack = this.cookie;
         return this.http
-            .post("/account/createtoken", creds)
-            .map((data: any) => {
+            .post("/account/createtoken", creds).pipe(
+            map((data: any) => {
                 if (creds.rememberMe) {
                     hack.set('id', data.user.id);
                     hack.set('token', data.token);
@@ -60,7 +61,7 @@ export class DatabaseService {
 
                 this.loggedInUser = data.user;
                 return true;
-            });
+            }));
     }
 
     register(creds) {
@@ -108,9 +109,5 @@ export class DatabaseService {
     //            return true;
     //        });
     //}
-
-    register(creds) {
-        return this.http
-            .post("/account/register", creds);
-    }
+    
 }

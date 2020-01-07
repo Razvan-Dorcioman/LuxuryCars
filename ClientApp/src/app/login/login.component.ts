@@ -13,7 +13,7 @@ export class LoginComponent {
 
     errorMessage: string = "";
     public creds = {
-        username: "",
+        email: "",
         password: "",
         rememberMe: false
     };

@@ -1,14 +1,14 @@
 <div class="main">
-  <form action="login" method="post">
+  <form action="login" method="post" (submit)="onLogin()">
     <h1><span>Luxury Cars</span> <label> Login </label> </h1>
     <div class="inset">
       <p>
-        <label for="email">EMAIL</label>
-        <input type="email" placeholder="email" required />
+        <label for="email" >EMAIL</label>
+        <input type="email" placeholder="email" name="email" [(ngModel)]="creds.email" #email="ngModel" required minlength="4" forbiddenName="Guest" />
       </p>
       <p>
         <label for="password">PASSWORD</label>
-        <input type="password" placeholder="password" required />
+        <input type="password" placeholder="password" name="password" [(ngModel)]="creds.password" #password="ngModel" required min-length />
       </p>
     </div>
 
