@@ -25,6 +25,7 @@ export class DatabaseService {
 
     public products: Product[] = [];
     public product = {};
+    public users = [];
 
 
 
@@ -88,6 +89,15 @@ export class DatabaseService {
                     return true;
                 }));
     }
+
+    //getAllUsers(): Observable<boolean> {
+    //    return this.http.get("/api/users")
+    //        .pipe(
+    //            map((data: any[]) => {
+    //                this.users = data;
+    //                return true;
+    //            }));
+    //}
 
     //login(creds): Observable<boolean> {
     //    const hack = this.cookie;

@@ -13,6 +13,7 @@ import { ContactComponent } from './contact/contact.component';
 import { SellCarComponent } from './sell-car/sell-car.component';
 import { ShopComponent } from './shop/shop.component';
 import { ProductComponent } from './product/product.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CookieService } from 'ngx-cookie-service';
     ContactComponent,
     SellCarComponent,
     ShopComponent,
-    ProductComponent
+    ProductComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,7 +40,8 @@ import { CookieService } from 'ngx-cookie-service';
         { path: 'contact', component: ContactComponent },
         { path: 'sell-car', component: SellCarComponent },
         { path: 'shop', component: ShopComponent },
-        { path: 'shop/product/:id', component: ProductComponent }
+        { path: 'shop/product/:id', component: ProductComponent },
+        { path: 'dashboard', component: DashboardComponent }
     ])
   ],
     providers: [ CookieService ],
