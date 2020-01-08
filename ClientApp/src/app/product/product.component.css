@@ -1,0 +1,22 @@
+.title {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 30px;
+}
+
+.price {
+  float: right;
+  margin-right: 50px;
+  margin-top: 60px;
+  font-size: 18px;
+}
+
+.specifications {
+  margin-top: 60px;
+  font-size: 18px;
+}
+
+.description {
+  margin-top: 10px;
+  font-size: 18px;
+}
