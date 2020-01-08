@@ -14,6 +14,7 @@ import { SellCarComponent } from './sell-car/sell-car.component';
 import { ShopComponent } from './shop/shop.component';
 import { ProductComponent } from './product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         { path: 'dashboard', component: DashboardComponent }
     ])
   ],
-  providers: [],
+    providers: [ CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

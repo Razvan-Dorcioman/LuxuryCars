@@ -10,8 +10,8 @@ namespace LuxuryCars.Models
     {
         IEnumerable<User> GetAllUsers();
         User GetUserById(string id);
-        bool updateUser(User user);
-        bool deleteUser(string id);
+        bool UpdateUser(User user);
+        bool DeleteUser(string id);
         IEnumerable<Product> GetAllProducts();
         IEnumerable<Product> GetProductsByBrand(string brand);
         Product GetProductById(int id);
