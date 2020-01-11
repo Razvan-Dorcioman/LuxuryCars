@@ -89,25 +89,14 @@ export class DatabaseService {
                 }));
     }
 
-    //login(creds): Observable<boolean> {
-    //    const hack = this.cookie;
-    //    return this.http
-    //        .post("/account/createtoken", creds)
-    //        .map((data: any) => {
-    //            if (creds.rememberMe) {
-    //                hack.set('id', data.user.id);
-    //                hack.set('token', data.token);
-    //                hack.set('tokenExpiration', data.expiration);
-    //            }
-    //            else {
-    //                hack.set('id', data.user.id, 1);
-    //                hack.set('token', data.token, 1);
-    //                hack.set('tokenExpiration', data.expiration, 1);
-    //            }
+    postProduct(product) {
+        return this.http
+            .post("/products/post", product);
+    }
 
-    //            this.loggedInUser = data.user;
-    //            return true;
-    //        });
-    //}
-    
+    signout() {
+        return this.http
+            .get("/account/logout");
+    }
+        
 }

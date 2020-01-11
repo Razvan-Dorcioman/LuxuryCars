@@ -13,11 +13,22 @@
       <li><a [routerLink]="['/shop']" name="shop">Shop</a></li>
       <li><a [routerLink]="['/contact']" name="contact">Contact</a></li>
       <li><a [routerLink]="['/profile']" name="profile">Profile</a></li>
-      <li><a [routerLink]="['/sell-car']" name="sell">Add car to sell</a></li>
-      <li><a [routerLink]="['/dashboard']" name="dashboard">Dashboard</a></li>
 
-      <li><a [routerLink]="['/login']" name="sign-in">Sign in</a></li>
-      <li><a [routerLink]="['/logout']" name="sign-out">Sign out</a></li>
+      <li [routerLinkActive]='["link-active"]'>
+      <a [routerLink]="['/sell-car']" name="sell" (click)="sellCar()">Add car to sell</a>
+      </li>
+
+      <li *ngIf="this.data.loggedInUser != null && this.data.loggedInUser.admin == true" [routerLinkActive]='["link-active"]'>
+      <a [routerLink]="['/dashboard']" name="dashboard" (click)="adminDashboard()">Dashboard</a>
+      </li>
+
+      <li *ngIf="this.data.loggedInUser == null" [routerLinkActive]='["link-active"]'>
+      <a [routerLink]="['/login']" name="sign-in">Sign in</a>
+      </li>
+
+      <li *ngIf="this.data.loggedInUser != null" [routerLinkActive]='["link-active"]'>
+        <a name="sign-out" (click)="onSignOut()">Sign out</a>
+      </li>
     </ul>
   </nav>
 </div>

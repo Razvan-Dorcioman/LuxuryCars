@@ -8,6 +8,8 @@ import { DatabaseService } from '../services/database.service';
 })
 export class SellCarComponent {
 
+
+
     constructor(private data: DatabaseService) {
     }
 

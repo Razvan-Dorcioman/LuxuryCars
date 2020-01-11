@@ -1,23 +1,40 @@
 <div class="main">
-  <form action="login" method="post">
+  <form action="login" method="post" (submit)="onRegister()">
     <h1><span>Luxury Cars</span> <label> Register </label> </h1>
     <div class="inset">
-      <p>
+      
         <label for="user_name">USER NAME</label>
-        <input type="text" placeholder="user name" required />
-      </p>
-      <p>
+        <input type="text" placeholder="user name" name="username" [(ngModel)]="creds.username" required #username="ngModel" minlength="4" />
+        <div class="text-danger" *ngIf="(username.touched || username.dirty) && username.invalid">
+          <div *ngIf="username.errors.required">Username is required</div>
+          <div *ngIf="username.errors.minlength">Username must be at least 4 characters long</div>
+        </div>
+      
+      
         <label for="email">EMAIL</label>
-        <input type="email" placeholder="email" required />
-      </p>
-      <p>
+        <input type="email" placeholder="email" name="email" [(ngModel)]="creds.email" required #email="ngModel" email="true" />
+        <div class="text-danger" *ngIf="(email.touched || email.dirty) && email.invalid">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">Email invalid</div>
+        </div>
+      
+      
         <label for="password">PASSWORD</label>
-        <input type="password" placeholder="password" required />
-      </p>
+        <input type="password" placeholder="password" name="password" [(ngModel)]="creds.password" required #password1="ngModel" minlength="8" />
+        <div class="text-danger" *ngIf="(password1.touched || password1.dirty) && password1.invalid">
+          <div *ngIf="password1.errors.required">Password is required</div>
+          <div *ngIf="password1.errors.minlength">Password must be at least 8 characters long</div>
+        </div>
+      
     </div>
 
     <p class="p-container">
       <input type="submit" value="Register">
     </p>
   </form>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
 </div> 
