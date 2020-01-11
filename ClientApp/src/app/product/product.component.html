@@ -1,17 +1,29 @@
 <div>
   <!-- nume articol; nume masina; specificatii; pret -->
-  <div style="display:inline-block">
-    <div style="width: 300px">
-      {{ product.title }}
-    </div>
-    <div style="width: 300px">
-      {{ product.price | currency: USD}}
-    </div>
+  <div class="title">
+    <b>{{ product.title }}</b>
+  </div>
+  <div class="price">
+    {{ product.price | currency: USD}}
   </div>
 
-  <div>
-    {{ product.brand}} {{product.model}}
+
+
+  <div class="specifications">
+    <div><b>Name: </b> <span style="">{{ product.brand}} {{product.model}}</span></div>
+    <div><b>Engine: </b> {{product.engine}}</div>
+    <div><b>Fuel type: </b> {{product.fuelType}}</div>
+    <div><b>Horse Power: </b> {{product.horsePower}}</div>
+    <div><b>KM: </b> {{product.km}}</div>
+    <div><b>Manufacturing: </b> {{ product.manufactoring | date:'yyyy'}}</div>
   </div>
+  <div class="description">
+    <div><b>Description:</b></div>
+    <div style="margin-left: 50px">
+      {{product.description}}
+      DESFGHSJDKFGLNHB;FCDAGfrftghdj,m,kxscdfvg
+    </div>
+  </div> 
 
 
 </div>

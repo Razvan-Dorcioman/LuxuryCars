@@ -25,6 +25,7 @@ export class DatabaseService {
 
     public products: Product[] = [];
     public product = {};
+    public users = [];
 
 
 
