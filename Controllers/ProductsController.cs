@@ -27,8 +27,10 @@ namespace LuxuryCars.Controllers
         {
             _repository = repository;
             _logger = logger;
-            _mapper = mapper;
+            _mapper = Mapping.Mapping.Mapper;
             _userManager = userManager;
+
+
         }
 
         [HttpGet]
@@ -61,6 +63,7 @@ namespace LuxuryCars.Controllers
         }
             
         [HttpPost]
+        [Route("postProduct")]
         public async Task<IActionResult> Post([FromBody]ProductViewModel model)
         {
             // add it to the db
@@ -70,7 +73,7 @@ namespace LuxuryCars.Controllers
                 {
                     var newProduct = _mapper.Map<ProductViewModel, Product>(model);
 
-                    var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
+                    var currentUser = await _userManager.FindByNameAsync(model.UserName);
                     newProduct.User = currentUser;
 
                     _repository.AddEntity(newProduct);

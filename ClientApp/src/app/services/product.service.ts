@@ -1,5 +1,11 @@
 export interface Product {
-    id: number;
-    title: string;
+    model: string;
+    brand: string;
     price: number;
+    title: string;
+    description: string;
+    engine: string;
+    fuelType: string;
+    horsePower: number;
+    manufactoring: Date
 }

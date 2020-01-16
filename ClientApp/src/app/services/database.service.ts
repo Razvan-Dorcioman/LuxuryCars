@@ -92,7 +92,7 @@ export class DatabaseService {
 
     postProduct(product) {
         return this.http
-            .post("/products/post", product);
+            .post("/api/products/postProduct", product);
     }
 
     signout() {

@@ -8,35 +8,38 @@
                 <h5>Sell a car</h5>
                 <hr>
                 <div class="form-group">
-                  <form class="signup" action="#" method="post">
+                  <form class="signup" action="#" method="post" (submit)="onPostCar()">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Title">
+                      <input type="text" class="form-control" placeholder="Title" name="title" [(ngModel)]="product.title" required #title="ngModel">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Brand">
+                      <input type="text" class="form-control" placeholder="Brand" name="brand" [(ngModel)]="product.brand" required #brand="ngModel">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Model">
+                      <input type="text" class="form-control" placeholder="Model" name="model" [(ngModel)]="product.model" required #model="ngModel">
                     </div>
 
                     <div class="form-group">
-                      <input type="number" class="form-control" placeholder="Price">
+                      <input type="number" class="form-control" placeholder="Price" name="price" [(ngModel)]="product.price" required #price="ngModel">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Engine">
+                      <input type="text" class="form-control" placeholder="Engine" name="engine" [(ngModel)]="product.engine" required #engine="ngModel">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="FuelType">
+                      <input type="text" class="form-control" placeholder="FuelType" name="fuelType" [(ngModel)]="product.fuelType" required #fuelType="ngModel">
                     </div>
                     <div class="form-group">
-                      <input type="number" class="form-control" placeholder="HorsePower">
+                      <input type="number" class="form-control" placeholder="HorsePower" name="horsePower" [(ngModel)]="product.horsePower" required #horsePower="ngModel">
                     </div>
                     <div class="form-group">
-                      <input type="date" class="form-control" placeholder="HorsePower">
-                      
+                      <input type="number" class="form-control" placeholder="KM" name="km" [(ngModel)]="product.km" required #km="ngModel">
                     </div>
                     <div class="form-group">
-                      <textarea class="form-control" rows="4" placeholder="Description"></textarea>
+                      <input type="date" class="form-control" placeholder="Manufactoring" name="manufactoring" [(ngModel)]="product.manufactoring" required #manufactoring="ngModel">
+
+                    </div>
+                    <div class="form-group">
+                      <textarea class="form-control" rows="4" placeholder="Description" name="description" [(ngModel)]="product.description" required #description="ngModel"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -44,6 +47,9 @@
                     </div>
                   </form>
 
+                  <div *ngIf="errorMessage" class="alert alert-danger">
+                    {{ errorMessage }}
+                  </div>
 
                 </div>
 

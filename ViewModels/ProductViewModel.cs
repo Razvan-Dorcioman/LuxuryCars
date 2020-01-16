@@ -9,6 +9,7 @@ namespace LuxuryCars.ViewModels
 {
     public class ProductViewModel
     {   
+        public int Id { get; set; }
         [Required]
         public string Model { get; set; }
         [Required]
@@ -26,8 +27,12 @@ namespace LuxuryCars.ViewModels
         [Required]
         public int HorsePower { get; set; }
         [Required]
-        public DateTime Manufactoring { get; set; }
+        public long KM { get; set; }
         [Required]
+        public DateTime Manufactoring { get; set; }
         public User User { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
     }
 }
